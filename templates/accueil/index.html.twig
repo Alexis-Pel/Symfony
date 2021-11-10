@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-    {% if objet.image %}
+    {% if objet != null %}
         <div id="Objet">
             <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
             <p id="placeHolder">Cliquer sur l'image pour dévoiler la description</p>
