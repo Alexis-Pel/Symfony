@@ -5,5 +5,44 @@
         <title>Accueil</title>
     </head>
     <body>
+    <div id="Objet">
+        <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
+        <div id="description">
+            <p>{{ objet.Nom }}</p>
+            <p>{{ objet.Description }}</p>
+        </div>
+    </div>
     </body>
 </html>
+
+<style>
+    html{
+        background-color: #DDDDDD;
+    }
+    .image {
+        margin-top: 80px;
+        background-size: cover;
+        width: 600px;
+        height: 400px;
+    }
+
+    #description{
+        margin-top: 30px;
+        display: flex;
+        visibility: hidden;
+        flex-direction: column;
+        width: 550px;
+    }
+
+    #Objet{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+
+<script>
+    function showDescription() {
+        document.getElementById("description").style.visibility = "visible";
+    }
+</script>
