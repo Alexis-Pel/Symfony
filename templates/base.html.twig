@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html id="html">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -14,6 +14,27 @@
         {% endblock %}
     </head>
     <body>
+    <!--{% block popUp %}{% endblock %}-->
+    <div id="menuBar">
+        <a href="/">Accueil</a>
+        <a href="/objet/">Liste Des Objets</a>
+        <a href="/users/">Liste Des Utilisateurs</a>
+    </div>
+    <br>
         {% block body %}{% endblock %}
     </body>
 </html>
+
+<style>
+    #menuBar{
+        display: flex;
+        height: 1%;
+        justify-content: space-around;
+    }
+
+    {% block style %}{% endblock %}
+</style>
+
+<script>
+    {% block script %}{% endblock %}
+</script>
