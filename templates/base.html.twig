@@ -16,9 +16,9 @@
     <body>
     <!--{% block popUp %}{% endblock %}-->
     <div id="menuBar">
-        <a href="/">Accueil</a>
-        <a href="/objet/">Liste Des Objets</a>
-        <a href="/users/">Liste Des Utilisateurs</a>
+        <a class="menu" href="/">Accueil</a>
+        <a class="menu" href="/objet/">Liste Des Objets</a>
+        <a class="menu" href="/users/">Liste Des Utilisateurs</a>
     </div>
     <br>
         {% block body %}{% endblock %}
@@ -26,7 +26,7 @@
 </html>
 
 <style>
-    a{
+    .menu{
         color: #E6E7E4;
         text-decoration: none;
     }
