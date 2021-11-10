@@ -10,14 +10,18 @@
 {% endblock %}
 
 {% block body %}
-    <div id="Objet">
-        <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
-        <p id="placeHolder">Cliquer sur l'image pour dévoiler la description</p>
-        <div id="description">
-            <p>{{ objet.Nom }}</p>
-            <p>{{ objet.Description }}</p>
+    {% if objet.image %}
+        <div id="Objet">
+            <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
+            <p id="placeHolder">Cliquer sur l'image pour dévoiler la description</p>
+            <div id="description">
+                <p>{{ objet.Nom }}</p>
+                <p>{{ objet.Description }}</p>
+            </div>
         </div>
-    </div>
+    {% else %}
+        <p>Pas d'image</p>
+    {% endif %}
 {% endblock %}
 
 {% block style %}
