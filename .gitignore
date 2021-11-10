@@ -57,6 +57,8 @@ Temporary Items
 .idea/**/uiDesigner.xml
 .idea/**/dbnavigator.xml
 
+.env
+.env.test
 # Gradle
 .idea/**/gradle.xml
 .idea/**/libraries
