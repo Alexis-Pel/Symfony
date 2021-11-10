@@ -1,4 +1,67 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+
+
+    <div class="container">
+
+        {{ form_label(form.Nom) }}
+
+        <div class="widget">
+            {{ form_widget(form.Nom) }}
+        </div>
+    </div>
+
+    <div class="container">
+
+        {{ form_label(form.Image) }}
+        <div class="widget">
+            {{ form_widget(form.Image) }}
+        </div>
+
+    </div>
+
+    <div class="container">
+
+        {{ form_label(form.Pays) }}
+
+        <div class="widget">
+            {{ form_widget(form.Pays) }}
+        </div>
+    </div>
+
+    <div class="container">
+
+        {{ form_label(form.Description) }}
+
+        <div class="containerDescription">
+            {{ form_widget(form.Description) }}
+        </div>
+
+    </div>
+
+
+
     <button class="btn">{{ button_label|default('Save') }}</button>
+
+<style>
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+    }
+    .widget input{
+        width: 200px;
+    }
+    .containerDescription{
+        max-width: 210px;
+    }
+    .containerDescription textarea{
+        min-width: 480px;
+        max-width:480px;
+        max-height: 100px;
+        min-height: 100px;
+    }
+</style>
+
 {{ form_end(form) }}
