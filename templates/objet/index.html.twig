@@ -21,9 +21,9 @@
             <tr>
                 <td>{{ objet.id }}</td>
                 <td>{{ objet.Nom }}</td>
-                <td>{{ objet.Image }}</td>
+                <td style="background-image:url({{ objet.image }}); height: 100px; width: 100px; background-size: contain; background-repeat: no-repeat;"{{ objet.Image }}</td>
                 <td>{{ objet.Pays }}</td>
-                <td>{{ objet.Description }}</td>
+                <td style="word-wrap: break-word; width: 800px;">{{ objet.Description }}</td>
                 <td>
                     <a href="{{ path('objet_show', {'id': objet.id}) }}">show</a>
                     <a href="{{ path('objet_edit', {'id': objet.id}) }}">edit</a>
@@ -36,6 +36,18 @@
         {% endfor %}
         </tbody>
     </table>
+    
 
     <a href="{{ path('objet_new') }}">Create new</a>
+{% endblock %}
+{% block style %}
+    <style>
+        html{
+            background: linear-gradient(217deg, rgba(125,206,130,.8) rgba(125,206,130,0) 70.71%), linear-gradient(127deg, rgba(232,226,136,.8), rgba(232,226,136,0) 70.71%), linear-gradient(336deg, rgba(255,131,96,.8), rgba(255,131,96,0) 70.71%);
+        }
+        th{
+            text-align: left;
+            vertical-align: text-bottom;
+        }
+    </style>
 {% endblock %}
