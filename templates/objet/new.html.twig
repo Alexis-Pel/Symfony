@@ -3,9 +3,47 @@
 {% block title %}New Objet{% endblock %}
 
 {% block body %}
-    <h1>Create new Objet</h1>
 
-    {{ include('objet/_form.html.twig') }}
+    <div id="bodyNewObjet" >
+        <h1>Create new Objet</h1>
 
-    <a href="{{ path('objet_index') }}">back to list</a>
+    <div class="containerFormNewObjet">
+        {{ include('objet/_form.html.twig') }}
+    </div>
+
+
+        <a class="returnList" href="{{ path('objet_index') }}"><div class="fleche">←</div></a>
+    </div>
+
 {% endblock %}
+
+{% block style %}
+    <style>
+        #bodyNewObjet{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+            height: 430px;
+            margin: 40px auto auto auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+        }
+        .containerFormNewObjet{
+            width: 40%;
+        }
+        .returnList{
+            margin-right: auto;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        .fleche{
+            font-size: 35px;
+        }
+        .fleche:hover{
+            zoom: 1.1;
+        }
+    </style>
+{% endblock %}
+

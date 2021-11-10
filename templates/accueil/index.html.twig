@@ -1,48 +1,114 @@
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Accueil</title>
-    </head>
-    <body>
-    <div id="Objet">
-        <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
-        <div id="description">
-            <p>{{ objet.Nom }}</p>
-            <p>{{ objet.Description }}</p>
-        </div>
+{% extends 'base.html.twig' %}
+
+{% block onLoad %}onload="genHexString()"{% endblock %}
+{% block title %}Accueil{% endblock %}
+
+{% block popUp %}
+    <div class="pop-up">
+        <p>Coucou</p>
     </div>
-    </body>
-</html>
+{% endblock %}
 
-<style>
-    html{
-        background-color: #DDDDDD;
-    }
-    .image {
-        margin-top: 80px;
-        background-size: cover;
-        width: 600px;
-        height: 400px;
+{% block body %}
+    {% if objet != null %}
+        <div id="Objet">
+            <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
+            <p id="placeHolder">Cliquer sur l'image pour dévoiler la description</p>
+            <div id="description">
+                <p>{{ objet.Nom }}</p>
+                <p>{{ objet.Description }}</p>
+            </div>
+        </div>
+    {% else %}
+        <p>Pas d'image</p>
+    {% endif %}
+{% endblock %}
+
+{% block style %}
+    <style>
+        .pop-up{
+        margin-top: 5px;
+        position: absolute;
+        background-color: #B0413E;
+        z-index: 10;
+        height: 600px;
+        width: 700px;
+        }
+        html{
+            background-size: cover;
+            height: 100%;
+        }
+        body{
+            justify-content: center;
+        }
+        .image {
+            max-height: 100%;
+            margin-top: 10px;
+            background-size: cover;
+            width: 600px;
+            height: 400px;
+            border-radius: 5px;
+        }
+        #description{
+            margin-top: 30px;
+            display: none;
+            flex-direction: column;
+            width: 550px;
+        }
+
+        #Objet{
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-bottom : solid 3px;
+            background-color: #999696;
+            padding-left: 10px;
+            padding-right: 10px;
+            background-position: center;
+            margin-left: 28%;
+            margin-right: 28%;
+        }
+    </style>
+{% endblock %}
+
+{% block script %}
+    function trim (str) {
+    return str.replace(/^\s+|\s+$/gm,'');
     }
 
-    #description{
-        margin-top: 30px;
-        display: flex;
-        visibility: hidden;
-        flex-direction: column;
-        width: 550px;
+    function rgbaToHex (rgba) {
+    var inParts = rgba.substring(rgba.indexOf("(")).split(","),
+    r = parseInt(trim(inParts[0].substring(1)), 10),
+    g = parseInt(trim(inParts[1]), 10),
+    b = parseInt(trim(inParts[2]), 10),
+    a = parseFloat(trim(inParts[3].substring(0, inParts[3].length - 1))).toFixed(2);
+    var outParts = [
+    r.toString(16),
+    g.toString(16),
+    b.toString(16),
+    Math.round(a * 255).toString(16).substring(0, 2)
+    ];
+
+    // Pad single-digit output values
+    outParts.forEach(function (part, i) {
+    if (part.length === 1) {
+    outParts[i] = '0' + part;
+    }
+    })
+
+    return ('#' + outParts.join(''));
     }
 
-    #Objet{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-</style>
+    let r = Math.floor((Math.random() * 255))
+    let g = Math.floor((Math.random() * 255))
+    let b = Math.floor((Math.random() * 255))
 
-<script>
+    document.getElementById("html").style.background = "linear-gradient(to bottom, " + rgbaToHex("rgba("+r+","+g+","+b+", .4)")+", "+ "#ffffff"+ ")";
+
+
     function showDescription() {
-        document.getElementById("description").style.visibility = "visible";
+    document.getElementById("description").style.display = "flex";
+    document.getElementById("placeHolder").style.display = "none";
     }
-</script>
+{% endblock %}
