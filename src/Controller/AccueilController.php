@@ -19,8 +19,14 @@ class AccueilController
     public function index(ObjetRepository $objetRepository)
     {
         $objets = $objetRepository->findAll();
-        $random = rand(1, count($objets));
-        $objet = $objetRepository->find($random);
+
+        for($i = 0; $i < 1; $i--){
+            $random = rand($objets[0]->getId(), $objets[array_key_last($objets)]->getId());
+            $objet = $objetRepository->find($random);
+            if($objet != null){
+                break;
+            }
+        }
         return new Response($this->twig->render("accueil/index.html.twig", ["objet"=>$objet]), 200);
     }
 

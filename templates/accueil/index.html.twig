@@ -12,7 +12,7 @@
 {% block body %}
     {% if objet != null %}
         <div id="Objet">
-            <div class="image" style="background-image:url({{ objet.image }})" onclick="showDescription()"></div>
+            <img class="image" src="{{ objet.image }}" onclick="showDescription()" alt="">
             <p id="placeHolder">Cliquer sur l'image pour dévoiler la description</p>
             <div id="description">
                 <p>{{ objet.Nom }}</p>
@@ -26,6 +26,9 @@
 
 {% block style %}
     <style>
+        p{
+            color: #7C90AD;
+        }
         .pop-up{
         margin-top: 5px;
         position: absolute;
@@ -61,8 +64,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            border-bottom : solid 3px;
-            background-color: #999696;
+            border : solid 3px #7C90AD;
+            background-color: #E6E7E4;
             padding-left: 10px;
             padding-right: 10px;
             background-position: center;
