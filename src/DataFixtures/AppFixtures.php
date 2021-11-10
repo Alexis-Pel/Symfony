@@ -72,9 +72,9 @@ class AppFixtures extends Fixture
         $objet = new Objet();
 
             $objet->setNom('Drapeau');
-            $objet->setImage('https://tinyurl.com/k3vyad9t');
+            $objet->setImage('https://drapeau-lgbt.fr/wp-content/uploads/2020/06/drapeau-lgbt-6-couleurs-504x378.jpg');
             $objet->setPays("Le pays des lettres");
-            $objet->setDescription("Ne vaut mieux pas en parler");
+            $objet->setDescription("Mieux vaut ne pas en parler");
             $manager->persist($objet);
 
             $manager->flush();
