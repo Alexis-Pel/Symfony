@@ -3,36 +3,84 @@
 {% block title %}Objet{% endblock %}
 
 {% block body %}
-    <h1>Objet</h1>
+    <div id="bodyShow">
+        <h1>Objet</h1>
 
-    <table class="table">
-        <tbody>
+        <table class="table">
+            <tbody>
             <tr>
-                <th>Id</th>
-                <td>{{ objet.id }}</td>
+                <th>Id :</th>
+                <td class="tdShow">{{ objet.id }}</td>
             </tr>
             <tr>
-                <th>Nom</th>
-                <td>{{ objet.Nom }}</td>
+                <th>Nom :</th>
+                <td class="tdShow">{{ objet.Nom }}</td>
             </tr>
             <tr>
-                <th>Image</th>
-                <td>{{ objet.Image }}</td>
+                <th>Image :</th>
+                <td class="tdShow"><img src="{{ objet.Image }}" style="width: 250px"></td>
             </tr>
             <tr>
-                <th>Pays</th>
-                <td>{{ objet.Pays }}</td>
+                <th>Pays :</th>
+                <td class="tdShow">{{ objet.Pays }}</td>
             </tr>
             <tr>
-                <th>Description</th>
-                <td>{{ objet.Description }}</td>
+                <th>Description :</th>
+                <td class="tdShow">{{ objet.Description }}</td>
             </tr>
-        </tbody>
-    </table>
+            </tbody>
+        </table>
 
-    <a href="{{ path('objet_index') }}">back to list</a>
+        <div class="btnShow" >
+            <button><a class="btnEditShow"href="{{ path('objet_edit', {'id': objet.id}) }}">Edit</a></button>
+            {{ include('objet/_delete_form.html.twig') }}
+        </div>
 
-    <a href="{{ path('objet_edit', {'id': objet.id}) }}">edit</a>
 
-    {{ include('objet/_delete_form.html.twig') }}
+        <a class="returnList" href="{{ path('objet_index') }}"><div class="fleche">←</div></a>
+    </div>
+
+{% endblock %}
+
+{% block style %}
+    <style>
+
+        #bodyShow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+            margin: 40px auto auto auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+        }
+        .tdShow{
+            text-align: center;
+        }
+        .btnShow{
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            margin-top: 20px;
+        }
+        .btnEditShow{
+            text-decoration: none;
+            color: black;
+        }
+        .returnList{
+            margin-right: auto;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        .fleche{
+            font-size: 35px;
+        }
+        .fleche:hover{
+            zoom: 1.1;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
 {% endblock %}
