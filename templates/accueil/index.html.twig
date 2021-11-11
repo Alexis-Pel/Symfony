@@ -17,6 +17,7 @@
             <div id="description">
                 <p>{{ objet.Nom }}</p>
                 <p>{{ objet.Description }}</p>
+                <button onclick="window.location.reload(true)">Générer une autre image</button>
             </div>
         </div>
     {% else %}
@@ -59,6 +60,14 @@
             width: 550px;
         }
 
+        #description button{
+            background-color: #435B7B;
+            color: #E6E7E4;
+            border-radius: 5px;
+            box-shadow: blue;
+            margin-bottom: 5px;
+        }
+
         #Objet{
             margin-top: 50px;
             display: flex;
@@ -74,7 +83,6 @@
         }
     </style>
 {% endblock %}
-
 {% block script %}
     function trim (str) {
     return str.replace(/^\s+|\s+$/gm,'');
