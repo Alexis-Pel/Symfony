@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,16 @@ class Users
      * @ORM\Column(type="string", length=255)
      */
     private $mail;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Objet::class, mappedBy="user_id", orphanRemoval=true)
+     */
+    private $objets;
+
+    public function __construct()
+    {
+        $this->objets = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +98,36 @@ class Users
     public function setMail(string $mail): self
     {
         $this->mail = $mail;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Objet[]
+     */
+    public function getObjets(): Collection
+    {
+        return $this->objets;
+    }
+
+    public function addObjet(Objet $objet): self
+    {
+        if (!$this->objets->contains($objet)) {
+            $this->objets[] = $objet;
+            $objet->setUserId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeObjet(Objet $objet): self
+    {
+        if ($this->objets->removeElement($objet)) {
+            // set the owning side to null (unless already changed)
+            if ($objet->getUserId() === $this) {
+                $objet->setUserId(null);
+            }
+        }
 
         return $this;
     }

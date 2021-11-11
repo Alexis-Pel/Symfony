@@ -38,6 +38,15 @@
 
     </div>
 
+<div class="container">
+
+    {{ form_label(form.user) }}
+
+    <div class="widget">
+        {{ form_widget(form.user) }}
+    </div>
+</div>
+
 
 
     <button class="btn">{{ button_label|default('Save') }}</button>
