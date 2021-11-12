@@ -5,6 +5,8 @@ namespace App\DataFixtures;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Objet;
+use App\Entity\Users;
+use DateTime;
 
 class AppFixtures extends Fixture
 {
@@ -12,13 +14,21 @@ class AppFixtures extends Fixture
     {
       
         $objet = new Objet();
+        $users = new Users();
+
+            $users->setFirstName('Alexis');
+            $users->setLastName('Pelissier');
+            $users->setBirthday(new DateTime('2002-07-28'));
+            $users->setMail("alexis.p@mail.com");
+            $manager->persist($users);
+
 
             $objet->setNom('Parapluie pour boire');
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907986224805978112/chindogu_008.png');
             $objet->setPays('Japon');
             $objet->setDescription("Il permet de récupérer l'eau de pluie dans un réservoir, plus aucun soucis de soif !");
+            $objet->setUser($users);
             $manager->persist($objet);
-
         
         $objet = new Objet();
 
@@ -26,8 +36,8 @@ class AppFixtures extends Fixture
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907986277838762064/stupides15.png');
             $objet->setPays('Japon');
             $objet->setDescription("Il permet de ne pas tremper ses jolies cheveux dans son bol de nouilles !");
+            $objet->setUser($users);
             $manager->persist($objet);
-
 
         $objet = new Objet();
 
@@ -35,6 +45,7 @@ class AppFixtures extends Fixture
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907986345547432016/e50b959867af45cc129c0bdc4434461b.png');
             $objet->setPays('Japon');
             $objet->setDescription("Il permet de te moucher sans avoir à chercher son paquet dans son sac !");
+            $objet->setUser($users);
             $manager->persist($objet);
 
         $objet = new Objet();
@@ -43,6 +54,7 @@ class AppFixtures extends Fixture
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907986588657668136/f8314f9fd3287815037178667b84f493.png');
             $objet->setPays('Chine');
             $objet->setDescription("Il permet de te faire la machine tout en entrainant son fessier ! Parfait pour...");
+            $objet->setUser($users);
             $manager->persist($objet);
 
         $objet = new Objet();
@@ -51,6 +63,7 @@ class AppFixtures extends Fixture
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907988986390278154/tong_reef_decap-c168c.png');
             $objet->setPays('France');
             $objet->setDescription("Il permet de décapsuler avec sa tong ! Pratique pour les soirées d'été.");
+            $objet->setUser($users);
             $manager->persist($objet);
 
         $objet = new Objet();
@@ -59,7 +72,9 @@ class AppFixtures extends Fixture
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907988660622860308/meilleurs-des-objets-inutiles-009-grille-numerote-pour-gratter-au-bon-endroit.png');
             $objet->setPays('Amérique');
             $objet->setDescription("Il permet de décrire la position exact de où un grattage est nécéssaire !");
+            $objet->setUser($users);
             $manager->persist($objet);
+
 
         $objet = new Objet();
 
@@ -67,16 +82,20 @@ class AppFixtures extends Fixture
             $objet->setImage('https://cdn.discordapp.com/attachments/836145572699177010/907988492926206003/w_doublepinte.png');
             $objet->setPays("Le pays de l'acoolisme");
             $objet->setDescription("Il permet de boire 2 fois plus, et 2 fois plus vite");
+            $objet->setUser($users);
             $manager->persist($objet);
         
+
         $objet = new Objet();
 
             $objet->setNom('Drapeau');
             $objet->setImage('https://drapeau-lgbt.fr/wp-content/uploads/2020/06/drapeau-lgbt-6-couleurs-504x378.jpg');
             $objet->setPays("Le pays des lettres");
             $objet->setDescription("Mieux vaut ne pas en parler");
+            $objet->setUser($users);
             $manager->persist($objet);
 
-            $manager->flush();
+        
+        $manager->flush();
     }
 }
