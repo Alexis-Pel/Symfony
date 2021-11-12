@@ -40,7 +40,7 @@ class Users
     private $mail;
 
     /**
-     * @ORM\OneToMany(targetEntity=Objet::class, mappedBy="user_id", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity=Objet::class, mappedBy="user", orphanRemoval=true)
      */
     private $objets;
 

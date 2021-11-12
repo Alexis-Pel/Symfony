@@ -107,4 +107,15 @@ class Objet
 
         return $this;
     }
+
+    public function getUserId()
+    {
+        return $this->user->getId();
+    }
+
+    public function setUserId($null)
+    {
+        $this->user->setId($null);
+        return $this;
+    }
 }

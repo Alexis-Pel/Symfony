@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Objet index{% endblock %}
+{% block title %}Liste des Objets{% endblock %}
 
 {% block body %}
-    <h1>Objet index</h1>
+    <h1 onclick="countClick()">Liste Des Objets</h1>
 
-    <table class="table">
+    <table id="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -16,7 +16,7 @@
                 <th>actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="tbody">
         {% for objet in objets %}
             <tr>
                 <td>{{ objet.id }}</td>
@@ -42,8 +42,28 @@
 {% endblock %}
 {% block style %}
     <style>
+        h1{
+            display: flex;
+            justify-content: center;
+            color: white;
+        }
+        table{
+            background-color: #DDDDDD;
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        @keyframes example {
+            0%   {left:0px; top:0px;}
+            25%   {left:0px; top:200px;}
+            50%  {left:200px; top:200px;}
+            50%  {left:200px; top:0px;}
+            100% {left:0px; top:0px;}
+        }
         body{
             background-image:url(https://media-exp1.licdn.com/dms/image/C5603AQGfLiZupUFKCg/profile-displayphoto-shrink_400_400/0/1591948837158?e=1642032000&v=beta&t=3OpzEtzdofASvCedWPyqP9lbHT7eE75K0vdzEk_fOPA);
+            background-color: #435B7B;
             background-size:cover;
         }
         th{
@@ -53,4 +73,17 @@
             vertical-align: top;
         }
     </style>
+{% endblock %}
+
+{% block script %}
+    let clicks = 0
+
+    function countClick() {
+    clicks++;
+    if(clicks === 10){
+    let table = document.getElementById("table")
+    table.style.animationName = "example";
+    table.style.animationDuration = "4s";
+    }
+    }
 {% endblock %}

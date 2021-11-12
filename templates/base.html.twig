@@ -16,9 +16,9 @@
     <body>
     <!--{% block popUp %}{% endblock %}-->
     <div id="menuBar">
-        <a class="menu" href="/">Accueil</a>
-        <a class="menu" href="/objet/">Objets</a>
-        <a class="menu" href="/users/">Utilisateurs</a>
+        <a class="menu accueil" href="/">Accueil</a>
+        <a class="menu objets" href="/objet/">Objets</a>
+        <a class="menu users" href="/users/">Utilisateurs</a>
     </div>
     <br>
         {% block body %}{% endblock %}
@@ -30,6 +30,19 @@
         color: #E6E7E4;
         text-decoration: none;
     }
+
+    .menu.accueil:hover{
+        color: #c1c1ff;
+    }
+
+    .menu.objets:hover{
+        color: #c1c1ff;
+    }
+
+    .menu.users:hover{
+        color: #c1c1ff;
+    }
+
     #menuBar{
         display: flex;
         height: 1%;
