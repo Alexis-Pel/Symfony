@@ -15,6 +15,18 @@ class SecretController extends AbstractController
     {
         return $this->render('secret/index.html.twig', [
             'controller_name' => 'SecretController',
+            'site'=>'https://matias.ma/nsfw'
+        ]);
+    }
+
+    /**
+     * @Route("/secret/pac", name="secretPac")
+     */
+    public function pac(): Response
+    {
+        return $this->render('secret/index.html.twig', [
+            'controller_name' => 'SecretController',
+            'site'=>'https://pacman.cc/html5/'
         ]);
     }
 }

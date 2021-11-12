@@ -10,7 +10,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1 id="Titre">große Taube</h1>
+    <h1 id="Titre" onclick="countClick()">große Taube</h1>
     {% if objet != null %}
         <div id="Objet">
             <img class="image" src="{{ objet.image }}" onclick="showDescription()" alt="">
@@ -92,8 +92,15 @@
         }
     </style>
 {% endblock %}
-
 {% block script %}
+    let clicks = 0
+
+    function countClick() {
+    clicks++;
+    if(clicks === 10){
+    window.location.replace("https://thesatanictemple.com/pages/join-us#shopify-section-join-membership-form")
+    }
+    }
     document.get
     function trim (str) {
     return str.replace(/^\s+|\s+$/gm,'');
