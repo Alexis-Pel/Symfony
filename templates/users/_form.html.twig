@@ -1,4 +1,63 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+<div class="container">
+
+    {{ form_label(form.first_name) }}
+
+    <div class="widget">
+        {{ form_widget(form.first_name) }}
+    </div>
+</div>
+
+<div class="container">
+
+    {{ form_label(form.last_name) }}
+    <div class="widget">
+        {{ form_widget(form.last_name) }}
+    </div>
+
+</div>
+
+<div class="container">
+
+    {{ form_label(form.birthday) }}
+
+    <div class="widget">
+        {{ form_widget(form.birthday) }}
+    </div>
+</div>
+
+<div class="container">
+
+    {{ form_label(form.mail) }}
+
+    <div class="containerDescription">
+        {{ form_widget(form.mail) }}
+    </div>
+
+</div>
+
+
+<button class="btn">{{ button_label|default('Save') }}</button>
+
+<style>
+
+    .container{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+    }
+    .widget input{
+        width: 200px;
+    }
+    .containerDescription{
+        max-width: 210px;
+    }
+    .containerDescription textarea{
+        min-width: 480px;
+        max-width:480px;
+        max-height: 100px;
+        min-height: 100px;
+    }
+</style>
 {{ form_end(form) }}
