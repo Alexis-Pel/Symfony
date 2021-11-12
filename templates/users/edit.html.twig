@@ -3,11 +3,59 @@
 {% block title %}Edit Users{% endblock %}
 
 {% block body %}
+<div id="bodyEditUser" >
     <h1>Edit Users</h1>
 
-    {{ include('users/_form.html.twig', {'button_label': 'Update'}) }}
+    <div class="containerFormNewUser">
+        {{ include('users/_form.html.twig', {'button_label': 'Update'}) }}
+        <div id="btnDelete">{{ include('users/_delete_form.html.twig') }}</div>
+    </div>
 
-    <a href="{{ path('users_index') }}">back to list</a>
+    <a class="returnList" href="{{ path('users_index') }}"><div class="fleche">←</div></a>
 
-    {{ include('users/_delete_form.html.twig') }}
+
+</div>
+{% endblock %}
+
+{% block style %}
+    <style>
+        html{
+            height: 100%;
+            background: linear-gradient(to bottom, #0D1B2B, #7C90AD);
+        }
+        #bodyEditUser{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+            height: 350px;
+            margin: 40px auto auto auto;
+            border-color: #435B7B;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+            background-color: #E6E7E4;
+        }
+        .containerFormNewUser{
+            width: 40%;
+        }
+        .returnList{
+            margin-right: auto;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        .fleche{
+            font-size: 35px;
+        }
+        .fleche:hover{
+            zoom: 1.1;
+        }
+        #btnDelete{
+            float: right;
+            margin-top: -21px;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
 {% endblock %}
