@@ -10,6 +10,7 @@
 {% endblock %}
 
 {% block body %}
+    <h1 id="Titre">große Taube</h1>
     {% if objet != null %}
         <div id="Objet">
             <img class="image" src="{{ objet.image }}" onclick="showDescription()" alt="">
@@ -27,6 +28,13 @@
 
 {% block style %}
     <style>
+        #Titre{
+            font-size: 70px;
+            display: flex;
+            justify-content: center;
+            margin: 0 0 0 0;
+            color: white;
+        }
         p{
             color: #4d74b1;
             font-family: Palatino, URW Palladio L, serif;
@@ -84,7 +92,9 @@
         }
     </style>
 {% endblock %}
+
 {% block script %}
+    document.get
     function trim (str) {
     return str.replace(/^\s+|\s+$/gm,'');
     }
@@ -117,6 +127,8 @@
     let b = Math.floor((Math.random() * 255))
 
     document.getElementById("html").style.background = "linear-gradient(to bottom, " + rgbaToHex("rgba("+r+","+g+","+b+", .4)")+", "+ "#ffffff"+ ")";
+    $titre = document.getElementById("Titre");
+    $titre.style.textShadow = "4px 4px " + rgbaToHex("rgba("+r+","+g+","+b+", .4)");
 
 
     function showDescription() {
