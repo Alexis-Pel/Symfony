@@ -3,36 +3,84 @@
 {% block title %}Users{% endblock %}
 
 {% block body %}
+<div id="bodyShow">
     <h1>Users</h1>
 
     <table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
-                <td>{{ user.id }}</td>
+                <td class="tdShow">{{ user.id }}</td>
             </tr>
             <tr>
                 <th>First_name</th>
-                <td>{{ user.firstName }}</td>
+                <td class="tdShow">{{ user.firstName }}</td>
             </tr>
             <tr>
                 <th>Last_name</th>
-                <td>{{ user.lastName }}</td>
+                <td class="tdShow">{{ user.lastName }}</td>
             </tr>
             <tr>
                 <th>Birthday</th>
-                <td>{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
+                <td class="tdShow">{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}</td>
             </tr>
             <tr>
                 <th>Mail</th>
-                <td>{{ user.mail }}</td>
+                <td class="tdShow">{{ user.mail }}</td>
             </tr>
         </tbody>
     </table>
 
-    <a href="{{ path('users_index') }}">back to list</a>
 
-    <a href="{{ path('users_edit', {'id': user.id}) }}">edit</a>
+    <div class="btnShow" >
+        <button><a class="btnEditShow"href="{{ path('users_edit', {'id': user.id}) }}">Edit</a></button>
+        {{ include('users/_delete_form.html.twig') }}
+    </div>
 
-    {{ include('users/_delete_form.html.twig') }}
+    <a class="returnList" href="{{ path('users_index') }}"><div class="fleche">←</div></a>
+</div>
+{% endblock %}
+
+{% block style %}
+    <style>
+
+        #bodyShow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 70%;
+            height: 270px;
+            margin: 40px auto auto auto;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px black;
+        }
+        .tdShow{
+            text-align: center;
+        }
+        .btnShow{
+            display: flex;
+            justify-content: space-around;
+            width: 90%;
+            margin-top: 20px;
+        }
+        .btnEditShow{
+            text-decoration: none;
+            color: black;
+        }
+        .returnList{
+            margin-right: auto;
+            margin-left: 15px;
+            margin-bottom: 5px;
+            text-decoration: none;
+        }
+        .fleche{
+            font-size: 35px;
+        }
+        .fleche:hover{
+            zoom: 1.1;
+        }
+        button:hover{
+            cursor: pointer;
+        }
+    </style>
 {% endblock %}
