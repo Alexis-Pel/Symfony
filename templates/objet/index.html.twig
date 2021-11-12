@@ -25,8 +25,8 @@
                 <td>{{ objet.Pays }}</td>
                 <td style="word-wrap: break-word; width: 800px;">{{ objet.Description }}</td>
                 <td>
-                    <a href="{{ path('objet_show', {'id': objet.id}) }}">show</a>
-                    <a href="{{ path('objet_edit', {'id': objet.id}) }}">edit</a>
+                    <button><a href="{{ path('objet_show', {'id': objet.id}) }}">show</a></button>
+                    <button><a href="{{ path('objet_edit', {'id': objet.id}) }}">edit</a></button>
                 </td>
             </tr>
         {% else %}
@@ -38,10 +38,17 @@
     </table>
     
 
-    <a href="{{ path('objet_new') }}">Create new</a>
+    <button style="margin-top: 15px; height: 30px"><a href="{{ path('objet_new') }}">Create new</a></button>
 {% endblock %}
 {% block style %}
     <style>
+        button a {
+            text-decoration: none;
+            color: black;
+        }
+        button{
+            background-color: #dfdfdf;
+        }
         h1{
             display: flex;
             justify-content: center;
@@ -63,8 +70,9 @@
         }
         body{
             background-image:url(https://media-exp1.licdn.com/dms/image/C5603AQGfLiZupUFKCg/profile-displayphoto-shrink_400_400/0/1591948837158?e=1642032000&v=beta&t=3OpzEtzdofASvCedWPyqP9lbHT7eE75K0vdzEk_fOPA);
-            background-color: #435B7B;
+            background-color: #1b283d;
             background-size:cover;
+            opacity: 0.8;
         }
         th{
             text-align: left;

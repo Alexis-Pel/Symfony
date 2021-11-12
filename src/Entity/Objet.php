@@ -36,7 +36,6 @@ class Objet
      * @ORM\Column(type="string", length=255)
      */
     private $Description;
-
     /**
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="objets")
      * @ORM\JoinColumn(nullable=false)
